@@ -8,4 +8,5 @@ resource "hcloud_network_subnet" "this" {
   type         = "cloud"
   network_zone = var.network_zone
   ip_range     = var.subnet_ip_range
-}
+}             
+ 
