@@ -23,4 +23,9 @@ module "server" {
 
   firewall_id = module.firewall.firewall_id
   subnet_id   = module.network.subnet_id
+
+  ssh_key_name   = "ai-dev-key"
+  ssh_public_key = file(pathexpand("~/.ssh/id_ed25519.pub"))
+
+  user_data = file("${path.module}/../../cloud-init/cloud-init.yaml")
 }

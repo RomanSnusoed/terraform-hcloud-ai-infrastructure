@@ -36,3 +36,18 @@ variable "subnet_id" {
   description = "Private subnet attached to the server"
   type        = string
 }
+
+variable "ssh_key_name" {
+  description = "Name of the SSH key in Hetzner Cloud"
+  type        = string
+}
+
+variable "ssh_public_key" {
+  description = "Public SSH key used to access the server"
+  type        = string
+}
+
+variable "user_data" {
+  description = "Cloud-init configuration executed during server creation"
+  type        = string
+}

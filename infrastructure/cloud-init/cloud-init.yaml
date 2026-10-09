@@ -1,0 +1,23 @@
+#cloud-config
+
+package_update: true
+package_upgrade: false
+
+packages:
+  - docker.io
+  - git
+  - curl
+
+runcmd:
+  - systemctl enable docker
+  - systemctl start docker
+
+  - git clone https://github.com/RomanSnusoed/terraform-hcloud-ai-infrastructure.git /opt/ai-backend
+
+  - docker build -t ai-backend /opt/ai-backend/app
+
+  - docker run -d
+    --name ai-backend
+    --restart unless-stopped
+    -p 80:8000
+    ai-backend
